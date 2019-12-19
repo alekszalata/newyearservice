@@ -9,8 +9,8 @@ from datetime import datetime
 def daystillNY(request):
     try:
         if request.method == "GET":
-            days = datetime(int(2019), 12, 31) - datetime.now()
-            json_pack = JsonResponse(f"New {str(2019)} year will be in {str(days.days)} days", safe=False)
+            days = datetime(int(2020), 1, 1) - datetime.now()
+            json_pack = JsonResponse(f"New {str(2020)} year will be in {str(days.days)} days", safe=False)
             return json_pack
     except ValueError as e:
         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
@@ -22,7 +22,7 @@ def daystillNY_byyear(request, data):
         if request.method == "GET":
             yeardata = int(data)
             print(f"YEARDATA IS {yeardata}")
-            days = datetime(int(yeardata), 12, 31) - datetime.now()
+            days = datetime(int(yeardata), 1, 1) - datetime.now()
             json_pack = JsonResponse(f"New {str(yeardata)} year will be in {str(days.days)} days", safe=False)
             return json_pack
     except ValueError as e:
